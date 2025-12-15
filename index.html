@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Agenda Barbería — Turnos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div id="loader">
+        <div class="logo">💈</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <div class="container" id="appContent" style="opacity:0; transition: opacity .35s ease;">
+
+        <header class="header">
+            <h1 class="title">AGENDA BARBERÍA</h1>
+
+            <select id="filtro" class="select-compact" onchange="render()">
+                <option value="todos">Todos</option>
+                <option value="peluquero1">Peluquero 1</option>
+                <option value="peluquero2">Peluquero 2</option>
+                <option value="peluquero3">Peluquero 3</option>
+                <option value="peluquero4">Peluquero 4</option>
+            </select>
+        </header>
+
+        <section class="form-card">
+            <div class="form-grid">
+                <div>
+                    <label class="label">Cliente</label>
+                    <input id="cliente" class="input" type="text" placeholder="Nombre completo">
+                </div>
+
+                <div>
+                    <label class="label">Peluquero</label>
+                    <select id="peluquero" class="input">
+                        <option value="">-- Selecciona peluquero --</option>
+                        <option value="peluquero1">Peluquero 1</option>
+                        <option value="peluquero2">Peluquero 2</option>
+                        <option value="peluquero3">Peluquero 3</option>
+                        <option value="peluquero4">Peluquero 4</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="label">Fecha</label>
+                    <div class="input-area" id="fecha-area">
+                        <input id="fecha" class="input" type="date">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="label">Hora</label>
+                    <div class="input-area" id="hora-area">
+                        <select id="hora" class="input"></select>
+                    </div>
+                </div>
+
+                <button class="btn-add full" onclick="addTurno()">AGENDAR</button>
+            </div>
+        </section>
+
+        <section id="listaCard">
+            <div id="lista"></div>
+            <div id="empty" style="color:#bbb;">No hay turnos todavía</div>
+        </section>
+    </div>
+
+    <div id="modalOverlay">
+        <div id="modal">
+            <h3 style="margin-top:0">¿Eliminar este turno?</h3>
+            <p id="modalText" style="color:#ddd;font-size:.9rem"></p>
+
+            <div style="display:flex; justify-content:center; gap:10px;">
+                <button class="modal-btn cancel" onclick="cerrarModal()">Cancelar</button>
+                <button class="modal-btn confirm" onclick="confirmarEliminar()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    </body>
+
+</html>
